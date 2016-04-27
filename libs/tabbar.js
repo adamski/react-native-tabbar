@@ -1,4 +1,4 @@
-import React, { Component, View } from 'react-native';
+import React, { Component, View} from 'react-native';
 import { buildTabGraph } from './tab_graph';
 import { Normalbar } from './bar';
 
@@ -6,13 +6,20 @@ const REF_BAR = 'REF_BAR';
 
 //Tabbar
 export default class Tabbar extends Component {
+  onLayout = event => { 
+    const { width } = event.nativeEvent.layout;
+    this.setState({ width: width });
+    console.log ("width: " + width);
+  } 
+
   constructor(props, context) {
     super(props, context);
     this.prevContentRef = null;
     this.prevtabRef = null;
     this.state = {
       tabs: buildTabGraph(props.children),
-      activeTab: ''
+      activeTab: '',
+      width: null
     };
   }
 
@@ -97,11 +104,12 @@ export default class Tabbar extends Component {
   render() {
     const { BarComponent, barSize, barColor, onLayout } = this.props;
     return (
-      <View style={{ flex: 1 }} onLayout={onLayout}>
+      <View style={{ flex: 1 }} onLayout={this.onLayout}>
         {this.renderContents()}
         <BarComponent
           barColor={barColor}
           ref={REF_BAR}
+          width={this.state.width}
           size={barSize}>
           {this.renderIcons()}
         </BarComponent>
