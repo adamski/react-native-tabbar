@@ -93,7 +93,6 @@ export default class Tabbar extends Component {
       initialTab = this.state.tabs[0].name;
     }
     this.gotoTab(initialTab);
-    console.log ("TabBar mounted")
   }
 
   render() {
