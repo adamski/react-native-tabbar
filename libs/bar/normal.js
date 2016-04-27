@@ -29,7 +29,7 @@ export default class Normalbar extends Component {
 
   render() {
     const { children, size, barColor } = this.props;
-    const { width } = window;
+    const width = this.props.width || window.width; 
 
     return (
       <Dynamicbar
