@@ -10,7 +10,7 @@ const glypy = glypyMapMaker({
 });
 
 export default class App extends Component {
-  onLayout = event => { console.log ("layout changed: " + event.nativeEvent.layout) } 
+  onLayout = event => { console.log ("layout changed: " + event.nativeEvent.layout.width + "x" + event.nativeEvent.layout.height ) } 
 
   constructor(props, context) {
     super(props, context);
