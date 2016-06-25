@@ -30,7 +30,6 @@ export default class Normalbar extends Component {
   render() {
     const { children, size, barColor, barBorderColor, barBorderWidth } = this.props;
     const width = this.props.width || window.width; 
-    console.log (`barBorderColor: ${barBorderColor}`)
 
     return (
       <Dynamicbar
