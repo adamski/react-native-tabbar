@@ -28,14 +28,21 @@ export default class Normalbar extends Component {
   }
 
   render() {
-    const { children, size, barColor } = this.props;
+    const { children, size, barColor, barBorderColor, barBorderWidth } = this.props;
     const width = this.props.width || window.width; 
 
     return (
       <Dynamicbar
         ref="dynamic"
         size={size}
-        style={[styles.bar, { width, backgroundColor: barColor }]}>
+        style={[
+		  styles.bar, { 
+            width, 
+            backgroundColor: barColor, 
+            borderTopColor: barBorderColor, 
+            borderTopWidth: barBorderWidth 
+          }
+        ]}>
         {children}
       </Dynamicbar>
     )
@@ -45,9 +52,13 @@ export default class Normalbar extends Component {
 Normalbar.propTypes = {
   size: React.PropTypes.number,
   duration: React.PropTypes.number,
-  barColor: React.PropTypes.string
+  barColor: React.PropTypes.string,
+  barBorderColor: React.PropTypes.string,
+  barBorderWidth: React.PropTypes.number
 };
 
 Normalbar.defaultProps = {
-  duration: 200
+  duration: 200,
+  barBorderColor: 'gray',
+  barBorderWidth: 0
 };
